@@ -17,6 +17,7 @@ namespace KanbanNotifier
             this.notifyIcon.Text = "KanbanNotifier";
             this.notifyIcon.Visible = true;
             this.notifyIcon.DoubleClick += NotifyIcon_DoubleClick;
+            this.notifyIcon.BalloonTipClicked += NotifyBalloon_Click;
         }
     }
 }
