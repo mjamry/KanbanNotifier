@@ -1,0 +1,10 @@
+c:\users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\KanbanNotifier.KanbanNotificationForm.resources
+c:\users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\KanbanNotifier.Properties.Resources.resources
+c:\users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\bin\Debug\KanbanNotifier.exe
+c:\users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\bin\Debug\KanbanNotifier.pdb
+c:\users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\KanbanNotifier.exe
+c:\users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\KanbanNotifier.pdb
+C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\KanbanNotifier.Resource.resources
