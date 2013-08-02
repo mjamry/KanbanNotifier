@@ -50,7 +50,7 @@ namespace KanbanNotifier.KanbanizeApi
             return activitiesList;
         }
 
-        public Task GetTask(int taskId)
+        private Task GetTask(int taskId)
         {
             string query = _assembler.GetTask().BoardId(BOARD_ID).TaskId(taskId).Query;
             _assembler.ClearQuery();
@@ -82,6 +82,7 @@ namespace KanbanNotifier.KanbanizeApi
 
                 try
                 {
+
                     response = client.UploadString(uri, string.Empty);
                 }
                 catch (WebException e)

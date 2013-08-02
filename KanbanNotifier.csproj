@@ -46,14 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activity.cs" />
+    <Compile Include="Dtos\Activity.cs" />
     <Compile Include="AppCore.cs" />
     <Compile Include="KanbanizeApi\KanbanizeApiWrapper.cs" />
     <Compile Include="KanbanizeApi\KanbanizeQueryAssembler.cs" />
-    <Compile Include="KanbanNotificationForm.cs">
+    <Compile Include="UI\KanbanNotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KanbanNotificationForm.Designer.cs">
+    <Compile Include="UI\KanbanNotificationForm.Designer.cs">
       <DependentUpon>KanbanNotificationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -63,12 +63,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
-    <Compile Include="Task.cs" />
-    <Compile Include="UICore.cs" />
-    <Compile Include="UICore.Designer.cs">
+    <Compile Include="Dtos\Task.cs" />
+    <Compile Include="UI\UICore.cs" />
+    <Compile Include="UI\UICore.Designer.cs">
       <DependentUpon>UICore.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="KanbanNotificationForm.resx">
+    <EmbeddedResource Include="UI\KanbanNotificationForm.resx">
       <DependentUpon>KanbanNotificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

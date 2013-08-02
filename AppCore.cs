@@ -25,7 +25,8 @@ namespace KanbanNotifier
 
             _uiCore.DataUpdateRequested += OnDataUpdateRequested;
             _uiCore.CloseRequest += OnCloseRequested;
-            _activitiesCache = wrapper.GetActivities();
+            
+            GetUpdate();
 
             _statusUpdateTimer.Interval = UPDATE_TIMEOUT;
             _statusUpdateTimer.Tick += OnTimerTick;
