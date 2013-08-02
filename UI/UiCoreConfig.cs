@@ -2,11 +2,11 @@
 {
     public class UiCoreConfig
     {
-        public UiCoreConfig(long timeout)
+        public UiCoreConfig(int timeout)
         {
             NotificationBalloonTimeout = timeout;
         }
 
-        public long NotificationBalloonTimeout { get; private set; }
+        public int NotificationBalloonTimeout { get; private set; }
     }
 }

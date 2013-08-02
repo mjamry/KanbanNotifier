@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 using System.Linq;
+using KanbanNotifier.Configuration;
 using KanbanNotifier.KanbanizeApi;
 using KanbanNotifier.UI;
 using Timer = System.Windows.Forms.Timer;
@@ -11,25 +12,30 @@ namespace KanbanNotifier.Core
 {
     public class AppCore : ApplicationContext
     {
-        private const int UPDATE_TIMEOUT = 30000;
         private List<Activity> _activitiesCache = new List<Activity>();
-        UICore _uiCore;
-        Timer _statusUpdateTimer = new Timer();
-        KanbanizeApiWrapper wrapper = new KanbanizeApiWrapper();
         private List<Activity> _lastActivities = new List<Activity>();
+
+        private readonly ConfigurationFactory _configFactory;
+        private readonly UICore _uiCore;
+        private readonly Timer _statusUpdateTimer;
+        private readonly KanbanizeApiWrapper _kanbanizeApi;
 
         public event EventHandler CloseRequested;
 
         public AppCore()
         {
-            _uiCore = new UICore();
+            _configFactory = new ConfigurationFactory(new ConfigurationParser());
+            _statusUpdateTimer = new Timer();
+            _kanbanizeApi = new KanbanizeApiWrapper(_configFactory.CreateApiConfig());
+            _uiCore = new UICore(_configFactory.CreateUiCoreConfig());
 
             _uiCore.DataUpdateRequested += OnDataUpdateRequested;
             _uiCore.CloseRequest += OnCloseRequested;
             
             GetUpdate();
 
-            _statusUpdateTimer.Interval = UPDATE_TIMEOUT;
+            //TODO - possibility to set higher interval. temporarly it is parsed as int.
+            _statusUpdateTimer.Interval = (int)_configFactory.CreateAppCoreConfig().UpdateTimeout;
             _statusUpdateTimer.Tick += OnTimerTick;
             
             _statusUpdateTimer.Start();
@@ -61,7 +67,7 @@ namespace KanbanNotifier.Core
 
         private void GetUpdate()
         {
-            List<Activity> update = wrapper.GetActivities();
+            List<Activity> update = _kanbanizeApi.GetActivities();
             CheckForChanges(update);
         }
 

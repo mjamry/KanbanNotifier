@@ -9,17 +9,26 @@ namespace KanbanNotifier.KanbanizeApi
 {
     public class KanbanizeApiWrapper
     {
-        private const string URL = "http://kanbanize.com/index.php/api/kanbanize";
-        private const string API_KEY = "wyUygoUtlYBIxQNzjyBXiKGH5Tx14phjFhMFAdzt";
-        private const int BOARD_ID = 2;
-        private const int RESULT_PER_PAGE = 100;
-        KanbanizeQueryAssembler _assembler = new KanbanizeQueryAssembler();
+        private readonly string _apiUrl;
+        private readonly string _apiKey;
+        private readonly int _boardId;
+        private readonly int _resultsPerPage;
+        private readonly KanbanizeQueryAssembler _assembler;
+
+        public KanbanizeApiWrapper(KanbanApiConfig config)
+        {
+            _assembler = new KanbanizeQueryAssembler();
+            _boardId = config.BoardId;
+            _resultsPerPage = config.ResultsPerPage;
+            _apiKey = config.ApiKey;
+            _apiUrl = config.ApiURL;
+        }
 
         public List<Activity> GetActivities()
         {
             DateTime date = new DateTime(2013, 08, 01);
 
-            string query = _assembler.GetActivities().BoardId(BOARD_ID).FromDate(date).ToDate("now").Page(1).ResultsPerPage(RESULT_PER_PAGE).Query;
+            string query = _assembler.GetActivities().BoardId(_boardId).FromDate(date).ToDate("now").Page(1).ResultsPerPage(_resultsPerPage).Query;
             _assembler.ClearQuery();
             string result = Request(query);
 
@@ -52,7 +61,7 @@ namespace KanbanNotifier.KanbanizeApi
 
         private Task GetTask(int taskId)
         {
-            string query = _assembler.GetTask().BoardId(BOARD_ID).TaskId(taskId).Query;
+            string query = _assembler.GetTask().BoardId(_boardId).TaskId(taskId).Query;
             _assembler.ClearQuery();
             string result = Request(query);
 
@@ -73,12 +82,12 @@ namespace KanbanNotifier.KanbanizeApi
         private string Request(string parameters)
         {
             string response = string.Empty;
-            Uri uri = new Uri(URL + parameters);
+            Uri uri = new Uri(_apiUrl + parameters);
 
             using (WebClient client = new WebClient())
             {
                 client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
-                client.Headers.Add("apikey", API_KEY);
+                client.Headers.Add("apikey", _apiKey);
 
                 try
                 {

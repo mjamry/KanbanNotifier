@@ -3,7 +3,7 @@ using System.Configuration;
 
 namespace KanbanNotifier.Configuration
 {
-    internal class ConfigurationParser : IConfigurationParser
+    public class ConfigurationParser : IConfigurationParser
     {
         private const string CONFIG_FILE_NAME = "config.xml";
         private readonly SettingsReader _reader;

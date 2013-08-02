@@ -32,7 +32,7 @@ namespace KanbanNotifier.Configuration
 
         public UiCoreConfig CreateUiCoreConfig()
         {
-            var timeout = _parser.GetLongValue(ConfigKeys.NotificationBalloonTimeout);
+            var timeout = _parser.GetIntValue(ConfigKeys.NotificationBalloonTimeout);
 
             return new UiCoreConfig(timeout);
         }
