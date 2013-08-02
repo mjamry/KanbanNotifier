@@ -11,8 +11,6 @@ namespace KanbanNotifier
 {
     public partial class KanbanNotificationForm : Form
     {
-        KanbanizeApiWrapper api = new KanbanizeApiWrapper();
-
         public KanbanNotificationForm()
         {
             InitializeComponent();
@@ -20,11 +18,11 @@ namespace KanbanNotifier
             this.Visible = false;
         }
 
-        public new void Show()
+        public new void Show(List<Activity> activities)
         {
             base.Show();
             this.WindowState = FormWindowState.Normal;
-            FillWithData(api.GetActivities());
+            FillWithData(activities);
         }
 
         public new void Hide()
@@ -36,6 +34,7 @@ namespace KanbanNotifier
         public new void Close()
         {
             this.Hide();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void FillWithData(List<Activity> activities)

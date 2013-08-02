@@ -15,12 +15,13 @@ namespace KanbanNotifier
         private const string URL = "http://kanbanize.com/index.php/api/kanbanize/";
         private const string API_KEY = "wyUygoUtlYBIxQNzjyBXiKGH5Tx14phjFhMFAdzt";
         private const int BOARD_ID = 2;
+        private const int RESULT_PER_PAGE = 100;
 
 
         public List<Activity> GetActivities()
         {
-            string parameters = "get_board_activities/boardid/{0}/fromdate/{1}/todate/{2}/page/{3}";
-            string result = Request(string.Format(parameters, BOARD_ID, "-1 day", "now", 1));
+            string parameters = "get_board_activities/boardid/{0}/fromdate/{1}/todate/{2}/page/{3}/resultsperpage/{4}";
+            string result = Request(string.Format(parameters, BOARD_ID, "-1 day", "now", 1, RESULT_PER_PAGE));
 
             XDocument doc = XDocument.Parse(result);
 
@@ -55,12 +56,13 @@ namespace KanbanNotifier
             string parameters = "get_task_details/boardid/{0}/taskid/{1}";
             string result = Request(string.Format(parameters, BOARD_ID, taskId));
 
-            XDocument doc = XDocument.Parse(result);
+            
 
 
             Task task = Task.Empty;
             try
             {
+                XDocument doc = XDocument.Parse(result);
                 task = new Task(int.Parse(doc.Root.Element("taskid").Value), doc.Root.Element("title").Value, doc.Root.Element("description").Value, doc.Root.Element("assignee").Value, ColorTranslator.FromHtml(doc.Root.Element("color").Value), doc.Root.Element("priority").Value, doc.Root.Element("extlink").Value);
             }
             catch(Exception e)
@@ -73,7 +75,7 @@ namespace KanbanNotifier
 
         private string Request(string parameters)
         {
-            string response;
+            string response = string.Empty;
             Uri uri = new Uri(URL + parameters);
 
             using (WebClient client = new WebClient())
@@ -81,8 +83,9 @@ namespace KanbanNotifier
                 client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                 client.Headers.Add("apikey", API_KEY);
 
-
-                response = client.UploadString(uri, string.Empty);
+                
+                    response = client.UploadString(uri, string.Empty);
+                
             }
 
             return response;

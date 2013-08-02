@@ -2,7 +2,7 @@
 
 namespace KanbanNotifier
 {
-    public class Activity
+    public class Activity : IEquatable<Activity>
     {
         public Activity(string author, string text, string history, DateTime time, int taskId)
         {
@@ -24,5 +24,22 @@ namespace KanbanNotifier
         public DateTime Date { get; private set; }
         public int TaskId { get; private set; }
         public Task Task { get; private set; }
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+        /// </returns>
+        /// <param name="other">An object to compare with this object.</param>
+        public bool Equals(Activity other)
+        {
+            if(other.Author == Author && other.Event == Event && other.Text == Text && other.Date == Date && other.TaskId == TaskId && other.Task.Equals(Task))
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
