@@ -8,26 +8,28 @@ using System.Net;
 using System.Collections.Specialized;
 using System.IO;
 
-namespace KanbanNotifier
+namespace KanbanNotifier.KanbanizeApi
 {
     public class KanbanizeApiWrapper
     {
-        private const string URL = "http://kanbanize.com/index.php/api/kanbanize/";
+        private const string URL = "http://kanbanize.com/index.php/api/kanbanize";
         private const string API_KEY = "wyUygoUtlYBIxQNzjyBXiKGH5Tx14phjFhMFAdzt";
         private const int BOARD_ID = 2;
         private const int RESULT_PER_PAGE = 100;
-
+        KanbanizeQueryAssembler _assembler = new KanbanizeQueryAssembler();
 
         public List<Activity> GetActivities()
         {
-            string parameters = "get_board_activities/boardid/{0}/fromdate/{1}/todate/{2}/page/{3}/resultsperpage/{4}";
-            string result = Request(string.Format(parameters, BOARD_ID, "-1 day", "now", 1, RESULT_PER_PAGE));
+            DateTime date = new DateTime(2013, 08, 01);
 
-            XDocument doc = XDocument.Parse(result);
+            string query = _assembler.GetActivities().BoardId(BOARD_ID).FromDate(date).ToDate("now").Page(1).ResultsPerPage(RESULT_PER_PAGE).Query;
+            _assembler.ClearQuery();
+            string result = Request(query);
 
             List<Activity> activitiesList = new List<Activity>();
             try
             {
+                XDocument doc = XDocument.Parse(result);
                 activitiesList = (
                                      from activities in doc.Root.Element("activities").Elements()
                                      select new Activity(
@@ -53,11 +55,9 @@ namespace KanbanNotifier
 
         public Task GetTask(int taskId)
         {
-            string parameters = "get_task_details/boardid/{0}/taskid/{1}";
-            string result = Request(string.Format(parameters, BOARD_ID, taskId));
-
-            
-
+            string query = _assembler.GetTask().BoardId(BOARD_ID).TaskId(taskId).Query;
+            _assembler.ClearQuery();
+            string result = Request(query);
 
             Task task = Task.Empty;
             try
@@ -67,7 +67,7 @@ namespace KanbanNotifier
             }
             catch(Exception e)
             {
-                
+                Console.Write(e.Message);
             }
            
             return task;
@@ -83,9 +83,14 @@ namespace KanbanNotifier
                 client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                 client.Headers.Add("apikey", API_KEY);
 
-                
+                try
+                {
                     response = client.UploadString(uri, string.Empty);
-                
+                }
+                catch (WebException e)
+                {
+                    Console.Write(e.Message);
+                }
             }
 
             return response;

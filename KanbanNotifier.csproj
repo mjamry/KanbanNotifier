@@ -48,7 +48,8 @@
   <ItemGroup>
     <Compile Include="Activity.cs" />
     <Compile Include="AppCore.cs" />
-    <Compile Include="KanbanizeApiWrapper.cs" />
+    <Compile Include="KanbanizeApi\KanbanizeApiWrapper.cs" />
+    <Compile Include="KanbanizeApi\KanbanizeQueryAssembler.cs" />
     <Compile Include="KanbanNotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 using System.Linq;
+using KanbanNotifier.KanbanizeApi;
 using Timer = System.Windows.Forms.Timer;
 
 namespace KanbanNotifier
