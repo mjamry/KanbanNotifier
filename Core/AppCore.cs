@@ -4,9 +4,10 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Linq;
 using KanbanNotifier.KanbanizeApi;
+using KanbanNotifier.UI;
 using Timer = System.Windows.Forms.Timer;
 
-namespace KanbanNotifier
+namespace KanbanNotifier.Core
 {
     public class AppCore : ApplicationContext
     {

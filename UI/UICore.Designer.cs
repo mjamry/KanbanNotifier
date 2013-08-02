@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace KanbanNotifier
+namespace KanbanNotifier.UI
 {
     public partial class UICore 
     {

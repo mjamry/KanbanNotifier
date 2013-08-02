@@ -1,10 +1,10 @@
 C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\bin\Debug\KanbanNotifier.exe
 C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\bin\Debug\KanbanNotifier.pdb
 C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\KanbanNotifier.KanbanNotificationForm.resources
 C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\KanbanNotifier.Properties.Resources.resources
 C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\KanbanNotifier.Resource.resources
 C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\KanbanNotifier.exe
 C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\KanbanNotifier.pdb
+C:\Users\mjamry\documents\visual studio 2010\Projects\KanbanNotifier\KanbanNotifier\obj\x86\Debug\KanbanNotifier.UI.KanbanNotificationForm.resources

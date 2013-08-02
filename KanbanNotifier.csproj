@@ -46,8 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigurationFactory.cs" />
+    <Compile Include="Configuration\ConfigurationParser.cs" />
+    <Compile Include="Configuration\IConfigurationParser.cs" />
+    <Compile Include="Configuration\ConfigKeys.cs" />
+    <Compile Include="Configuration\SettingsReader.cs" />
+    <Compile Include="Core\AppCoreConfig.cs" />
     <Compile Include="Dtos\Activity.cs" />
-    <Compile Include="AppCore.cs" />
+    <Compile Include="Core\AppCore.cs" />
+    <Compile Include="KanbanizeApi\KanbanApiConfig.cs" />
     <Compile Include="KanbanizeApi\KanbanizeApiWrapper.cs" />
     <Compile Include="KanbanizeApi\KanbanizeQueryAssembler.cs" />
     <Compile Include="UI\KanbanNotificationForm.cs">
@@ -68,6 +75,7 @@
     <Compile Include="UI\UICore.Designer.cs">
       <DependentUpon>UICore.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UiCoreConfig.cs" />
     <EmbeddedResource Include="UI\KanbanNotificationForm.resx">
       <DependentUpon>KanbanNotificationForm.cs</DependentUpon>
     </EmbeddedResource>

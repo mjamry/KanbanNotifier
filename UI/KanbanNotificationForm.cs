@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace KanbanNotifier
+namespace KanbanNotifier.UI
 {
     public partial class KanbanNotificationForm : Form
     {

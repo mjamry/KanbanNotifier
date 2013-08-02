@@ -1,4 +1,4 @@
-﻿namespace KanbanNotifier
+﻿namespace KanbanNotifier.UI
 {
     partial class KanbanNotificationForm
     {
