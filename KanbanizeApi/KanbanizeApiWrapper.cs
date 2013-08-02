@@ -26,7 +26,8 @@ namespace KanbanNotifier.KanbanizeApi
 
         public List<Activity> GetActivities()
         {
-            DateTime date = new DateTime(2013, 08, 01);
+            //yesterday
+            DateTime date = DateTime.Now.AddDays(-1);
 
             string query = _assembler.GetActivities().BoardId(_boardId).FromDate(date).ToDate("now").Page(1).ResultsPerPage(_resultsPerPage).Query;
             _assembler.ClearQuery();
