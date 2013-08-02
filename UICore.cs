@@ -11,6 +11,7 @@ namespace KanbanNotifier
 
         private KanbanNotificationForm _mainView;
         public event EventHandler DataUpdateRequested;
+        public event EventHandler CloseRequest;
 
 
         public UICore()
@@ -50,6 +51,15 @@ namespace KanbanNotifier
         private void NotifyBalloon_Click(object sender, EventArgs e)
         {
             RequestDataUpdate();
+        }
+
+        private void CloseMenuItem_Click(object sender, EventArgs e)
+        {
+            var temp = CloseRequest;
+            if(temp != null)
+            {
+                temp(this, EventArgs.Empty);
+            }
         }
     }
 }

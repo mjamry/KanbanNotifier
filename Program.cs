@@ -15,7 +15,14 @@ namespace KanbanNotifier
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AppCore());
+            var appCore = new AppCore();
+            appCore.CloseRequested += OnCloseRequested;
+            Application.Run(appCore);
+        }
+
+        private static void OnCloseRequested(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

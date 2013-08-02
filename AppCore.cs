@@ -17,20 +17,29 @@ namespace KanbanNotifier
         KanbanizeApiWrapper wrapper = new KanbanizeApiWrapper();
         private List<Activity> _lastActivities = new List<Activity>();
 
+        public event EventHandler CloseRequested;
+
         public AppCore()
         {
-            
-
             _uiCore = new UICore();
 
-
             _uiCore.DataUpdateRequested += OnDataUpdateRequested;
+            _uiCore.CloseRequest += OnCloseRequested;
             _activitiesCache = wrapper.GetActivities();
 
             _statusUpdateTimer.Interval = UPDATE_TIMEOUT;
             _statusUpdateTimer.Tick += OnTimerTick;
             
             _statusUpdateTimer.Start();
+        }
+
+        private void OnCloseRequested(object sender, EventArgs e)
+        {
+            var temp = CloseRequested;
+            if(temp != null)
+            {
+                temp(sender, e);
+            }
         }
 
         private void OnDataUpdateRequested(object sender, EventArgs e)
