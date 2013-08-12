@@ -43,7 +43,7 @@ namespace KanbanNotifier.UI
             {
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(gridView);
-                row.SetValues(activity.TaskId, activity.Task.Title, activity.Task.Description, activity.Task.Assignee, activity.Event, activity.Date, activity.Task.Link, activity.Text, activity.Task.Priority);
+                row.SetValues(activity.TaskId, activity.Task.Title, activity.Event, activity.EventDescription, activity.Date, activity.Task.Assignee, activity.Task.Link, activity.Task.Priority, activity.Task.Description);
                 row.DefaultCellStyle.BackColor = activity.Task.Color;
                 gridView.Rows.Add(row);
             }

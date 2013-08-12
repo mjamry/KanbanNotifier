@@ -4,11 +4,11 @@ namespace KanbanNotifier
 {
     public class Activity : IEquatable<Activity>
     {
-        public Activity(string author, string text, string history, DateTime time, int taskId)
+        public Activity(string author, string eventDescription, string eventType, DateTime time, int taskId)
         {
             Author = author;
-            Event = history;
-            Text = text;
+            Event = eventType;
+            EventDescription = eventDescription;
             Date = time;
             TaskId = taskId;
         }
@@ -20,7 +20,7 @@ namespace KanbanNotifier
 
         public string Author { get; private set; }
         public string Event { get; private set; }
-        public string Text { get; private set; }
+        public string EventDescription { get; private set; }
         public DateTime Date { get; private set; }
         public int TaskId { get; private set; }
         public Task Task { get; private set; }
@@ -34,7 +34,7 @@ namespace KanbanNotifier
         /// <param name="other">An object to compare with this object.</param>
         public bool Equals(Activity other)
         {
-            if(other.Date == Date && other.Author == Author && other.Event == Event && other.Text == Text)
+            if(other.Date == Date && other.Author == Author && other.Event == Event && other.EventDescription == EventDescription)
             {
                 return true;
             }
