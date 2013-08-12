@@ -34,7 +34,7 @@ namespace KanbanNotifier
         /// <param name="other">An object to compare with this object.</param>
         public bool Equals(Activity other)
         {
-            if(other.Author == Author && other.Event == Event && other.Text == Text && other.Date == Date && other.TaskId == TaskId && other.Task.Equals(Task))
+            if(other.Date == Date && other.Author == Author && other.Event == Event && other.Text == Text)
             {
                 return true;
             }
