@@ -6,7 +6,6 @@ using System.Linq;
 using KanbanNotifier.Configuration;
 using KanbanNotifier.KanbanizeApi;
 using KanbanNotifier.UI;
-using Timer = System.Windows.Forms.Timer;
 
 namespace KanbanNotifier.Core
 {
@@ -17,7 +16,7 @@ namespace KanbanNotifier.Core
 
         private readonly ConfigurationFactory _configFactory;
         private readonly UICore _uiCore;
-        private readonly Timer _statusUpdateTimer;
+        private readonly System.Windows.Forms.Timer _statusUpdateTimer;
         private readonly KanbanizeApiWrapper _kanbanizeApi;
 
         public event EventHandler CloseRequested;
@@ -25,7 +24,7 @@ namespace KanbanNotifier.Core
         public AppCore()
         {
             _configFactory = new ConfigurationFactory(new ConfigurationParser());
-            _statusUpdateTimer = new Timer();
+            _statusUpdateTimer = new System.Windows.Forms.Timer();
             _kanbanizeApi = new KanbanizeApiWrapper(_configFactory.CreateApiConfig());
             _uiCore = new UICore(_configFactory.CreateUiCoreConfig());
 

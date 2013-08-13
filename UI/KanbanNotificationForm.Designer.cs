@@ -59,6 +59,7 @@
             this.gridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridView.Location = new System.Drawing.Point(0, 0);
             this.gridView.Name = "gridView";
+            this.gridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridView.Size = new System.Drawing.Size(950, 376);
             this.gridView.TabIndex = 0;
             // 
@@ -66,6 +67,7 @@
             // 
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
+            this.ID.Width = 60;
             // 
             // Title
             // 
@@ -88,6 +90,7 @@
             // 
             this.Date.HeaderText = "Date";
             this.Date.Name = "Date";
+            this.Date.Width = 120;
             // 
             // Assignee
             // 
@@ -105,6 +108,7 @@
             // 
             this.Priority.HeaderText = "Priority";
             this.Priority.Name = "Priority";
+            this.Priority.Width = 70;
             // 
             // Description
             // 
